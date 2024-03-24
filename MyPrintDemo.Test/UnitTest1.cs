@@ -14,7 +14,7 @@ namespace MyPrintDemo.Test
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 connection.Open();
-                string str = "Select top 0 * from Users";
+                string str = "Select top 0 * from Users";// читаю шапку таблицы
                 SqlCommand command = new SqlCommand(str, connection);
                 name = command.ExecuteReader().ToString();
  
