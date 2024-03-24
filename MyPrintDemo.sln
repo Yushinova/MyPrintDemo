@@ -5,6 +5,11 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPrintDemo", "MyPrintDemo\MyPrintDemo.csproj", "{4E095F4D-043E-4C98-AD82-8253E2325C5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPrintDemo.Test", "MyPrintDemo.Test\MyPrintDemo.Test.csproj", "{9080A830-DC78-4B1B-AF4F-AB1D40F1B0D6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E095F4D-043E-4C98-AD82-8253E2325C5E} = {4E095F4D-043E-4C98-AD82-8253E2325C5E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{4E095F4D-043E-4C98-AD82-8253E2325C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E095F4D-043E-4C98-AD82-8253E2325C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E095F4D-043E-4C98-AD82-8253E2325C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9080A830-DC78-4B1B-AF4F-AB1D40F1B0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9080A830-DC78-4B1B-AF4F-AB1D40F1B0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9080A830-DC78-4B1B-AF4F-AB1D40F1B0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9080A830-DC78-4B1B-AF4F-AB1D40F1B0D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
