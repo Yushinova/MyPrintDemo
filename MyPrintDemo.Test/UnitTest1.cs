@@ -9,7 +9,7 @@ namespace MyPrintDemo.Test
         public void TestPositive()
         {
             string name = "";
-            var conf = new DB_config.ConfigDB { DataSource= "DESKTOP-Q6DF710\\SQLEXPRESS", NameDb="MyPrint" };
+            var conf = new DB_config.ConfigDB { DataSource= "DESKTOP-H7HCK7B\\SQLEXPRESS", NameDb="MyPrint" };
            SqlConnection connection = new SqlConnection(conf.ToString());
             if (connection.State == System.Data.ConnectionState.Closed)
             {
@@ -26,7 +26,7 @@ namespace MyPrintDemo.Test
         public void TestNegative()
         {
             string name = "";
-            var conf = new DB_config.ConfigDB { DataSource = "DESKTOP-Q6DF710\\SQLEXPRESSdd", NameDb = "MyPrint" };
+            var conf = new DB_config.ConfigDB { DataSource = "DESKTOP-H7HCK7B\\SQLEXPRESSdd", NameDb = "MyPrint" };
             SqlConnection connection = new SqlConnection(conf.ToString());
             try
             {
