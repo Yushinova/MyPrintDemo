@@ -8,39 +8,17 @@ namespace MyPrintDemo.Test
         [Fact]
         public void TestPositive()
         {
-            string name = "";
+            string expected = "Server=DESKTOP-H7HCK7B\\SQLEXPRESS;Database=MyPrint;Trusted_Connection=True";
             var conf = new DB_config.ConfigDB { DataSource= "DESKTOP-H7HCK7B\\SQLEXPRESS", NameDb="MyPrint" };
-           SqlConnection connection = new SqlConnection(conf.ToString());
-            if (connection.State == System.Data.ConnectionState.Closed)
-            {
-                connection.Open();
-                string str = "Select top 0 * from Users";// читаю шапку таблицы
-                SqlCommand command = new SqlCommand(str, connection);
-                name = command.ExecuteReader().ToString();
- 
-            }
-            else connection.Close();
-            Assert.NotEmpty(name);
+            string fact = conf.GetConfigDB().ToString();
+            Assert.Equal(expected, fact);
         }
         [Fact]
         public void TestNegative()
         {
-            string name = "";
             var conf = new DB_config.ConfigDB { DataSource = "DESKTOP-H7HCK7B\\SQLEXPRESSdd", NameDb = "MyPrint" };
-            SqlConnection connection = new SqlConnection(conf.ToString());
-            try
-            {
-                if (connection.State == System.Data.ConnectionState.Closed)
-                {
-                    connection.Open();
-                    string str = "Select top 0 * from Users";
-                    SqlCommand command = new SqlCommand(str, connection);
-                    name = command.ExecuteScalar().ToString();
-                }
-                else connection.Close();
-            }
-            catch (Exception) { };
-            Assert.Empty(name);
+            string fact = conf.GetConfigDB().ToString();
+            Assert.Empty(fact);
         }
     }
 }
