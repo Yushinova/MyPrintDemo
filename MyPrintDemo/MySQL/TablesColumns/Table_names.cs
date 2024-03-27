@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyPrintDemo.MySQL
+namespace MyPrintDemo.MySQL.TablesColumns
 {
     public class Table_names
     {
@@ -13,5 +13,6 @@ namespace MyPrintDemo.MySQL
         public const string TABLE_ORDERS = "Orders";
         public const string TABLE_IMAGES = "Images";
         public const string TABLE_PAYMENTS = "Payments";
+        public const string TABLE_ORDERS_PRODUCTS = "Orders_Products";
     }
 }
