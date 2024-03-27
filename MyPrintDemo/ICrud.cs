@@ -8,9 +8,9 @@ namespace MyPrintDemo
 {
     interface ICrud<T>
     {
-        IEnumerable<T> GetAll();
-        T GetByID(int id);
-        void InsertObj(T obj);
-        void UpdateObj(T obj);
+       Task <IEnumerable<T>> GetAllAsync();
+       Task <T> GetByIDAsync(int id);
+        Task InsertObj(T obj);
+        Task UpdateObj(T obj);
     }
 }

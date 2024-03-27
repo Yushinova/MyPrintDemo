@@ -1,0 +1,1 @@
+﻿Server=DESKTOP-H7HCK7B\SQLEXPRESS;Database=MyPrint;Trusted_Connection=True

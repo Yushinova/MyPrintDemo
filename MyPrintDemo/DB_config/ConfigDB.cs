@@ -19,7 +19,7 @@ namespace MyPrintDemo.DB_config
         }
         public string GetConfigDB()
         {
-            SqlConnection test = new SqlConnection($"Server={DataSource};Database ={NameDb};Trusted_Connection=True");
+            SqlConnection test = new SqlConnection($"Server={DataSource};Database={NameDb};Trusted_Connection=True");
             string test_str = "";
             try
             {
