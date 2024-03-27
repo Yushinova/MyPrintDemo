@@ -10,7 +10,7 @@ namespace MyPrintDemo
     {
        Task <IEnumerable<T>> GetAllAsync();
        Task <T> GetByIDAsync(int id);
-        Task InsertObj(T obj);
-        Task UpdateObj(T obj);
+        Task InsertObjAsync(T obj);
+        Task UpdateObjAsync(T obj);
     }
 }

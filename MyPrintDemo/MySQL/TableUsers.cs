@@ -35,7 +35,7 @@ values ('{obj.Password}','{obj.Login}', '{obj.Name}', '{obj.Surname}', '{obj.Pho
             await _service.UpdateAndInsertAsync(sql);
         }
 
-        public Task UpdateObj(User obj)//тоже самое
+        public Task UpdateObjAsync(User obj)//тоже самое
         {
             throw new NotImplementedException();
         }
