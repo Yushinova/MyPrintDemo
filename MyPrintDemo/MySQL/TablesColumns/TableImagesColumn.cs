@@ -10,6 +10,6 @@ namespace MyPrintDemo.MySQL.TablesColumns
     {
         public const string ID_IMAGE = "ID_image";
         public const string URL = "Url";
-        public const string PRODUCT_ID = "Product_ID";
+        public const string ORDER_ID = "Order_ID";
     }
 }

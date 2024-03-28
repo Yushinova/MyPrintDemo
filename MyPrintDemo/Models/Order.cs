@@ -9,11 +9,11 @@ namespace MyPrintDemo.Models
     public class Order
     {
         public int Id_order { get; set; }
-        public double? Cost_order { get; set; }
         public DateTime Date_order { get; set; }
         public bool IsPaid {  get; set; }
         public bool IsProduction { get; set; }
         public bool IsReady { get; set; }
         public int User_ID { get; set; }
+        public int Product_ID { get; set; }
     }
 }

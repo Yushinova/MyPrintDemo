@@ -10,6 +10,8 @@ namespace MyPrintDemo.Models
     {
         public int Id_product { get; set; }
         public string Name_product { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
         public int Count_product { get; set; }
         public double? Cost_product { get; set; }
         public bool IsActuality { get; set; }

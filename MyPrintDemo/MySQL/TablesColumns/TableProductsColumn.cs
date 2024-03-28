@@ -10,6 +10,8 @@ namespace MyPrintDemo.MySQL.TablesColumns
     {
         public const string ID_PRODUCT = "Id_product";
         public const string NAME_PRODUCT = "Name_product";
+        public const string HEIGHT = "Height";
+        public const string WIDTH = "Width";
         public const string COUNT_PRODUCT = "Count_product";
         public const string COST_PRODUCT = "Cost_product";
         public const string ISACTUALITY = "IsActuality";

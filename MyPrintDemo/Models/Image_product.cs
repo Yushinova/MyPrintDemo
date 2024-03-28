@@ -10,6 +10,6 @@ namespace MyPrintDemo.Models
     {
         public int Id_image { get; set; }
         public string Url { get; set; }
-        public int Product_ID { get; set; }
+        public int Order_ID { get; set; }
     }
 }
