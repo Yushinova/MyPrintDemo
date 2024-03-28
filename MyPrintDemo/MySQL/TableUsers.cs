@@ -35,9 +35,13 @@ values ('{obj.Password}','{obj.Login}', '{obj.Name}', '{obj.Surname}', '{obj.Pho
             await _service.UpdateAndInsertAsync(sql);
         }
 
-        public Task UpdateObjAsync(User obj)//тоже самое
+        public async Task UpdateObjAsync(User obj)//тоже самое
         {
-            throw new NotImplementedException();
+            string sql = $"""
+update {Table_names.TABLE_USERS} set {TableUsersColumn.PASSWORD}='{obj.Password}', {TableUsersColumn.LOGIN}='{obj.Login}',
+{TableUsersColumn.NAME}='{obj.Name}', {TableUsersColumn.SURNAME}='{obj.Surname}', {TableUsersColumn.PHONE}='{obj.Phone}'
+""";
+            await _service.UpdateAndInsertAsync(sql);
         }
     }
 }
