@@ -17,7 +17,7 @@ namespace MyPrintDemo.Services
             var connectionstr = config.GetConfigDB_str();
             if (string.IsNullOrEmpty(connectionstr))
             {
-                throw new Exception($"Ошибка строки подключения {db}");
+                throw new ArgumentException($"Ошибка строки подключения {db}");
             }
             else { _db = new SqlConnection(connectionstr); }
         }

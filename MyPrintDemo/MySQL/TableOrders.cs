@@ -30,7 +30,7 @@ namespace MyPrintDemo.MySQL
         {
             string sql = $"""
 insert into {Table_names.TABLE_ORDERS} ({TableOrdersColumns.DATE_ORDER},{TableOrdersColumns.USER_ID},{TableOrdersColumns.PRODUCT_ID})
-values ('{obj.Date_order}',{obj.User_ID},{obj.Product_ID})
+values ('{obj.Date_order:yyyy-MM-dd HH:mm:ss}',{obj.User_ID},{obj.Product_ID})
 """;
             await _service.UpdateAndInsertAsync(sql);
         }
@@ -38,9 +38,9 @@ values ('{obj.Date_order}',{obj.User_ID},{obj.Product_ID})
         public async Task UpdateObjAsync(Order obj)
         {
             string sql = $"""
-update {Table_names.TABLE_ORDERS} set {TableOrdersColumns.DATE_ORDER}='{obj.Date_order}',
-{TableOrdersColumns.ISPAID}='{obj.IsPaid}',{TableOrdersColumns.ISPRODUCTION}='{obj.IsProduction}',
-{TableOrdersColumns.ISREADY}='{obj.IsReady}'
+update {Table_names.TABLE_ORDERS} set {TableOrdersColumns.DATE_ORDER}='{obj.Date_order:yyyy-MM-dd HH:mm:ss}',
+{TableOrdersColumns.ISPAID}={obj.IsPaid},{TableOrdersColumns.ISPRODUCTION}={obj.IsProduction},
+{TableOrdersColumns.ISREADY}={obj.IsReady}
 where {TableOrdersColumns.ID_ORDER}={obj.Id_order}
 """;
             await _service.UpdateAndInsertAsync(sql);

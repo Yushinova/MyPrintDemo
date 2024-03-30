@@ -31,7 +31,7 @@ namespace MyPrintDemo.MySQL
             string sql = $"""
 insert into {Table_names.TABLE_PRODUCTS} ({TableProductsColumn.NAME_PRODUCT},{TableProductsColumn.HEIGHT},
 {TableProductsColumn.WIDTH}, {TableProductsColumn.COUNT_PRODUCT}, {TableProductsColumn.COST_PRODUCT})
-values ('{obj.Name_product}','{obj.Height}', '{obj.Width}', '{obj.Count_product}', '{obj.Count_product}')
+values ('{obj.Name_product}',{obj.Height}, {obj.Width}, {obj.Count_product}, {obj.Count_product})
 """;
             await _service.UpdateAndInsertAsync(sql);
         }
@@ -40,8 +40,8 @@ values ('{obj.Name_product}','{obj.Height}', '{obj.Width}', '{obj.Count_product}
         {
             string sql = $"""
 update {Table_names.TABLE_PRODUCTS} set {TableProductsColumn.NAME_PRODUCT}='{obj.Name_product}',
-{TableProductsColumn.HEIGHT}='{obj.Height}',{TableProductsColumn.WIDTH}='{obj.Width}',
-{TableProductsColumn.COUNT_PRODUCT}='{obj.Count_product}', {TableProductsColumn.COST_PRODUCT}='{obj.Cost_product}'
+{TableProductsColumn.HEIGHT}={obj.Height},{TableProductsColumn.WIDTH}={obj.Width},
+{TableProductsColumn.COUNT_PRODUCT}={obj.Count_product}, {TableProductsColumn.COST_PRODUCT}={obj.Cost_product}
 where {TableProductsColumn.ID_PRODUCT}={obj.Id_product}
 """;
             await _service.UpdateAndInsertAsync(sql);

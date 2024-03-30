@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPrintDemo.Models
 {
-    public class Payment
+    public record Payment
     {
         public int Id_payment { get; set; }
         public double Sum_payment { get; set; }

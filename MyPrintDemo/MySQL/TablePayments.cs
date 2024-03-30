@@ -30,7 +30,7 @@ namespace MyPrintDemo.MySQL
         {
             string sql = $"""
 insert into {Table_names.TABLE_PAYMENTS} ({TablePaymentsColumns.SUM_PAYMENT},{TablePaymentsColumns.DATE_PAYMENT},{TablePaymentsColumns.ORDER_ID})
-values ('{obj.Sum_payment}',{obj.Date_payment},{obj.Order_Id})
+values ({obj.Sum_payment},'{obj.Date_payment:yyyy-MM-dd hh:mm:ss}',{obj.Order_Id})
 """;
             await _service.UpdateAndInsertAsync(sql);
         }
