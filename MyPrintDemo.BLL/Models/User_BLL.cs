@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyPrintDemo.Models
+namespace MyPrintDemo.BLL.Models
 {
-    public record User
+    public record User_BLL
     {
         public int ID_user { get; set; }
         public string Password { get; set; }
@@ -14,6 +14,5 @@ namespace MyPrintDemo.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Phone { get; set; }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPrintDemo
 {
-    interface ICrud<T>
+    public interface ICrud<T>
     {
        Task <IEnumerable<T>> GetAllAsync();
        Task <T> GetByIDAsync(int id);
