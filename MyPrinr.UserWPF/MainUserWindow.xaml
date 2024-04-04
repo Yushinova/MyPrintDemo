@@ -1,0 +1,51 @@
+﻿<Window x:Class="MyPrinr.UserWPF.MainUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPrinr.UserWPF"
+        mc:Ignorable="d"
+        Title="MainUserWindow" Height="450" Width="800">
+    <Grid>
+        <Grid x:Name="MainGrid" Visibility="Hidden">
+            <Label Content="Личный кабинет" FontSize="36"
+      Foreground="Aqua" Margin="0,0,0,350"
+      Height="50" Width="300"/>
+            <Label Content="MyPrint.Demo" FontSize="24" Foreground="Aqua" FontWeight="Bold"
+      Width="200" Height="50" Margin="550,300,0,0">
+
+            </Label>
+
+            <Button x:Name="RegButton" Height="50" Width="250" Background="Aqua" Margin="450,0,0,100"
+       Content="Регистрация" FontSize="25">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="AutoButton" Height="50" Width="250" Background="Aqua" Margin="450,50,0,0"
+Content="Авторизация" FontSize="25">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Grid x:Name="RegistrGrid" >
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/fon.png"/>
+            </Grid.Background>
+            <Label Content="Новый пользователь"
+            FontSize="30"
+      Foreground="Aqua" Margin="0,0,0,350"
+      Height="50" Width="300"/>
+
+        </Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/fon.png"/>
+        </Grid.Background>
+    </Grid>
+</Window>
