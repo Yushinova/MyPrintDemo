@@ -13,7 +13,7 @@ namespace MyPrintDemo.BLL
     public class ListOfUsers
     {
         private ICrud<User> user_source;
-        public List<User_BLL> users { get;}
+        public List<User_BLL> users = new List<User_BLL>();
         public ListOfUsers()
         {
             user_source = new TableUsers();

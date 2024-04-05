@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MyPrintDemo.BLL.Models;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,16 @@ namespace MyPrintDemo.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+       public MyPrintDemo.BLL.Context context = new BLL.Context();
+        public List<User_BLL> users = new List<User_BLL>();
+        //public BLL.ListOfUsers users;
         public MainWindow()
         {
+           // context = new BLL.Context();
+          
             InitializeComponent();
+           // users = context.Users.GetAllAsync().Result.ToList();
+
         }
     }
 }
