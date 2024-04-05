@@ -11,7 +11,7 @@ namespace MyPrintDemo.Services
     public class MySqlService<T>
     {
         private readonly SqlConnection _db;
-        public MySqlService(string db = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\MyPrintDemo\\MyPrintDemo.Test\\TestDB.mdf;Integrated Security=True;")
+        public MySqlService(string db = "Server=DESKTOP-H7HCK7B\\SQLEXPRESS;Database=MyPrint;Trusted_Connection=True")
         {
             ConfigDB_str config = new ConfigDB_str { connection_str = db };
             var connectionstr = config.GetConfigDB_str();

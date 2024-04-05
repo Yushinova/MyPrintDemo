@@ -19,10 +19,10 @@ namespace MyPrintDemo.Test
         };
         private List<Models.Order> expectes_orders = new List<Models.Order>()
         {
-            new Models.Order{Id_order=1, Date_order=new DateTime(2024,3,29,6,19,21), IsPaid=1, IsProduction=1, IsReady=0, Product_ID=1, User_ID=1},
-            new Models.Order{Id_order=2, Date_order=new DateTime(2024,3,28,13,32,0), IsPaid=0, IsProduction=0, IsReady=0, User_ID=1, Product_ID=3},
-            new Models.Order{Id_order=3, Date_order=new DateTime(2024,3,28,13,32,0), IsPaid=0, IsProduction=0, IsReady=0, User_ID=2, Product_ID=2},
-            new Models.Order{Id_order=4, Date_order=new DateTime(2024,3,30,21,36,15), IsPaid=0, IsProduction=0, IsReady=0, User_ID=2, Product_ID=3}
+            new Models.Order{Id_order=1, Date_order=new DateTime(2024,3,28,13,27,33), IsPaid=0, IsProduction=0, IsReady=0, Product_ID=1, User_ID=1},
+            new Models.Order{Id_order=2, Date_order=new DateTime(2024,3,28,13,27,33), IsPaid=0, IsProduction=0, IsReady=0, User_ID=1, Product_ID=3},
+            new Models.Order{Id_order=3, Date_order=new DateTime(2024,3,28,13,27,33), IsPaid=0, IsProduction=0, IsReady=0, User_ID=2, Product_ID=2},
+            new Models.Order{Id_order=4, Date_order=new DateTime(2024,3,30,21,36,15), IsPaid=1, IsProduction=1, IsReady=1, User_ID=2, Product_ID=3}
         };
         private MySqlService<Models.User> positive_service = new MySqlService<Models.User>();
 
@@ -68,7 +68,7 @@ values ('TEST','TEST', 'TEST', 'TEST', 'TEST')
         [Fact]
         public async void UpdateAndInsertAsyncOrder()
         {
-            Models.Order test = new Models.Order { Id_order = 4, Date_order = new DateTime(2024, 3, 30, 21, 36, 15), IsPaid = 0, IsProduction = 0, IsReady = 0, Product_ID = 2, User_ID = 3 };
+            Models.Order test = new Models.Order { Id_order = 4, Date_order = new DateTime(2024, 3, 30, 21, 36, 15), IsPaid = 1, IsProduction = 1, IsReady = 1, Product_ID = 2, User_ID = 3 };
             TableOrders orders = new TableOrders();
             await orders.UpdateObjAsync(test);
         }
