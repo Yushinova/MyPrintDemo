@@ -16,26 +16,26 @@ namespace MyPrintDemo.MySQL
         {
             _service = new MySqlService<Order>();
         }
-        public async Task<IEnumerable<Order>> GetAllAsync()
+        public IEnumerable<Order> GetAllAsync()
         {
-            return await _service.GetValuesAsync(Table_names.TABLE_ORDERS);
+            return _service.GetValuesAsync(Table_names.TABLE_ORDERS);
         }
 
-        public Task<Order> GetByIDAsync(int id)//не понадобится
+        public Order GetByIDAsync(int id)//не понадобится
         {
             throw new NotImplementedException();
         }
 
-        public async Task InsertObjAsync(Order obj)
+        public void InsertObjAsync(Order obj)
         {
             string sql = $"""
 insert into {Table_names.TABLE_ORDERS} ({TableOrdersColumns.DATE_ORDER},{TableOrdersColumns.USER_ID},{TableOrdersColumns.PRODUCT_ID})
 values ('{obj.Date_order}',{obj.User_ID},{obj.Product_ID})
 """;
-            await _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsertAsync(sql);
         }
 
-        public async Task UpdateObjAsync(Order obj)
+        public void UpdateObjAsync(Order obj)
         {
             string sql = $"""
 update {Table_names.TABLE_ORDERS} set {TableOrdersColumns.DATE_ORDER}='{obj.Date_order}',
@@ -43,7 +43,7 @@ update {Table_names.TABLE_ORDERS} set {TableOrdersColumns.DATE_ORDER}='{obj.Date
 {TableOrdersColumns.ISREADY}={obj.IsReady}
 where {TableOrdersColumns.ID_ORDER}={obj.Id_order}
 """;
-            await _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsertAsync(sql);
         }
     }
 }

@@ -16,32 +16,32 @@ namespace MyPrintDemo.MySQL
         {
             _service = new MySqlService<User>();
         }
-        public async Task<IEnumerable<User>> GetAllAsync()
+        public IEnumerable<User> GetAllAsync()
         {
-            return await _service.GetValuesAsync(Table_names.TABLE_USERS);
+            return _service.GetValuesAsync(Table_names.TABLE_USERS);
         }
 
-        public async Task<User> GetByIDAsync(int id)
+        public User GetByIDAsync(int id)
         {
-            return await _service.GetByIdAsync(Table_names.TABLE_USERS, TableUsersColumn.ID_USER, id);
+            return _service.GetByIdAsync(Table_names.TABLE_USERS, TableUsersColumn.ID_USER, id);
         }
 
-        public async Task InsertObjAsync(User obj)//делаем запрос на вставку и передаем в сервис
+        public void InsertObjAsync(User obj)//делаем запрос на вставку и передаем в сервис
         {
 string sql = $"""
 insert into {Table_names.TABLE_USERS} ({TableUsersColumn.PASSWORD},{TableUsersColumn.LOGIN},{TableUsersColumn.NAME}, {TableUsersColumn.SURNAME}, {TableUsersColumn.PHONE})
 values ('{obj.Password}','{obj.Login}', '{obj.Name}', '{obj.Surname}', '{obj.Phone}')
 """;
-            await _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsertAsync(sql);
         }
 
-        public async Task UpdateObjAsync(User obj)//тоже самое
+        public void UpdateObjAsync(User obj)//тоже самое
         {
             string sql = $"""
 update {Table_names.TABLE_USERS} set {TableUsersColumn.PASSWORD}='{obj.Password}', {TableUsersColumn.LOGIN}='{obj.Login}',
 {TableUsersColumn.NAME}='{obj.Name}', {TableUsersColumn.SURNAME}='{obj.Surname}', {TableUsersColumn.PHONE}='{obj.Phone}'
 """;
-            await _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsertAsync(sql);
         }
     }
 }

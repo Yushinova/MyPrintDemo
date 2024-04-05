@@ -25,7 +25,7 @@ namespace MyPrintDemo.WPF
            // context = new BLL.Context();
           
             InitializeComponent();
-           // users = context.Users.GetAllAsync().Result.ToList();
+           users = context.Users.GetAllAsync().ToList();
 
         }
     }

@@ -26,7 +26,7 @@ namespace MyPrintDemo.DB_config
                 }
                 else test.Close();
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             if (test_str == "")
             {
                 return test_str;

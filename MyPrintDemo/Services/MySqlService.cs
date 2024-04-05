@@ -21,30 +21,30 @@ namespace MyPrintDemo.Services
             }
             else { _db = new SqlConnection(connectionstr); }
         }
-        public async Task<IEnumerable<T>> GetValuesAsync(string table_name)
+        public IEnumerable<T> GetValuesAsync(string table_name)
         {
-            await _db.OpenAsync();
+            _db.Open();
             var sql = $"Select * from {table_name}";
-            IEnumerable<T> values = await _db.QueryAsync<T>(sql);
-            await _db.CloseAsync();
+            IEnumerable<T> values = _db.Query<T>(sql);
+            _db.Close();
             return values;
         }
 
-        public async Task<T> GetByIdAsync(string table_name, string column_name, int key)
+        public T GetByIdAsync(string table_name, string column_name, int key)
         {
-            await _db.OpenAsync();
+            _db.Open();
             var sql = $"Select * from {table_name} where {column_name} = {key}";
-            T value = await _db.QuerySingleAsync<T>(sql);
-            await _db.CloseAsync();
+            T value = _db.QuerySingle<T>(sql);
+            _db.Close();
             return value;
 
         }
 
-        public async Task UpdateAndInsertAsync(string sql)
+        public void UpdateAndInsertAsync(string sql)
         {
-            await _db.OpenAsync();
-           await _db.ExecuteAsync(sql);
-            await _db.CloseAsync();
+            _db.Open();
+           _db.Execute(sql);
+            _db.Close();
         }
 
     }

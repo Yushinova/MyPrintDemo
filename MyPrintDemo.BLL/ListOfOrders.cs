@@ -17,14 +17,14 @@ namespace MyPrintDemo.BLL
         {
             order_source = new TableOrders();
         }
-        public async Task<IEnumerable<Order_BLL>> GetAllAsync()
+        public IEnumerable<Order_BLL> GetAllAsync()
         {
-            var result = await order_source.GetAllAsync();
+            var result = order_source.GetAllAsync();
             TableUsers users = new TableUsers();
             TableProducts products = new TableProducts();
 
-            var all_users =await users.GetAllAsync();
-            var all_products =await products.GetAllAsync();
+            var all_users = users.GetAllAsync();
+            var all_products = products.GetAllAsync();
             foreach (var item in result)
             {
                orders.Add(Mappers.BLLMapper.MapOrderToOrder_BLL(item, all_users, all_products));
@@ -34,16 +34,16 @@ namespace MyPrintDemo.BLL
 
         //public async Task<Order_BLL> GetByIDAsync(int id) { };
 
-        public async Task InsertObjAsync(Order_BLL order)//делаем запрос на вставку и передаем в сервис
+        public void InsertObjAsync(Order_BLL order)//делаем запрос на вставку и передаем в сервис
         {
 
-            await order_source.InsertObjAsync(Mappers.BLLMapper.MapOrder_BLLToOrder(order));
+            order_source.InsertObjAsync(Mappers.BLLMapper.MapOrder_BLLToOrder(order));
         }
 
-        public async Task UpdateObjAsync(Order_BLL order)//тоже самое
+        public void UpdateObjAsync(Order_BLL order)//тоже самое
         {
 
-            await order_source.UpdateObjAsync(Mappers.BLLMapper.MapOrder_BLLToOrder(order));
+            order_source.UpdateObjAsync(Mappers.BLLMapper.MapOrder_BLLToOrder(order));
         }
     }
 }
