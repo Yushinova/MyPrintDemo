@@ -41,5 +41,7 @@ Background="Aqua" Padding="3,-2,3,3"/>
         <Button x:Name="RegistButton" Width="150"
                 Content="Зарегистрироваться" Height="40"
                 Margin="230,190,0,0"/>
+        <Button x:Name="BackButton" Width="80" Height="40"
+         Content="Назад" Margin="600,0,0,300" />
     </Grid>
 </UserControl>

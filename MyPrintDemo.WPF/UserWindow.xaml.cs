@@ -10,21 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyPrintDemo.WPF.Elements
+namespace MyPrintDemo.WPF
 {
     /// <summary>
-    /// Логика взаимодействия для UserRegistration.xaml
+    /// Логика взаимодействия для UserWindow.xaml
     /// </summary>
-    public partial class UserRegistration : UserControl
+    public partial class UserWindow : Window
     {
-        public UserRegistration()
+        private readonly BLL.Context context;
+        public UserWindow(BLL.Models.User_BLL user)
         {
-            
             InitializeComponent();
+            context = new BLL.Context();
+            LoginUser.DataContext = user;
         }
-
+            
+       
     }
 }
