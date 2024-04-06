@@ -12,21 +12,22 @@ namespace MyPrintDemo.BLL
     public class ListOfPayments
     {
         private ICrud<Payment> payment_source;
-        public List<Payment_BLL> payments { get; }
+        
         public ListOfPayments()
         {
             payment_source = new TablePayments();
         }
-        public IEnumerable<Payment_BLL> GetAllAsync()
+        public IEnumerable<Payment_BLL> GetAll()
         {
-            var result = payment_source.GetAllAsync();
+            List<Payment_BLL> payments = new List<Payment_BLL>();
+            var result = payment_source.GetAll();
             TableOrders orders = new TableOrders();
             TableUsers users = new TableUsers();
             TableProducts products = new TableProducts();
 
-            var all_users = users.GetAllAsync();
-            var all_products =  products.GetAllAsync();
-            var all_orders = orders.GetAllAsync();
+            var all_users = users.GetAll();
+            var all_products =  products.GetAll();
+            var all_orders = orders.GetAll();
 
             foreach (var item in result)
             {
@@ -37,16 +38,16 @@ namespace MyPrintDemo.BLL
 
         //public async Task<Order_BLL> GetByIDAsync(int id) { };
 
-        public void InsertObjAsync(Payment_BLL payment)//делаем запрос на вставку и передаем в сервис
+        public void InsertObj(Payment_BLL payment)//делаем запрос на вставку и передаем в сервис
         {
 
-            payment_source.InsertObjAsync(Mappers.BLLMapper.MapPayment_BLLToPayment(payment));
+            payment_source.InsertObj(Mappers.BLLMapper.MapPayment_BLLToPayment(payment));
         }
 
-        public void UpdateObjAsync(Payment_BLL payment)//тоже самое
+        public void UpdateObj(Payment_BLL payment)//тоже самое
         {
 
-            payment_source.UpdateObjAsync(Mappers.BLLMapper.MapPayment_BLLToPayment(payment));
+            payment_source.UpdateObj(Mappers.BLLMapper.MapPayment_BLLToPayment(payment));
         }
     }
 }

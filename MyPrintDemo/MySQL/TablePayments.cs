@@ -16,26 +16,26 @@ namespace MyPrintDemo.MySQL
         {
             _service = new MySqlService<Payment>();
         }
-        public IEnumerable<Payment> GetAllAsync()
+        public IEnumerable<Payment> GetAll()
         {
-            return _service.GetValuesAsync(Table_names.TABLE_PAYMENTS);
+            return _service.GetValues(Table_names.TABLE_PAYMENTS);
         }
 
-        public Payment GetByIDAsync(int id)//no
+        public Payment GetByID(int id)//no
         {
             throw new NotImplementedException();
         }
 
-        public void InsertObjAsync(Payment obj)
+        public void InsertObj(Payment obj)
         {
             string sql = $"""
 insert into {Table_names.TABLE_PAYMENTS} ({TablePaymentsColumns.SUM_PAYMENT},{TablePaymentsColumns.DATE_PAYMENT},{TablePaymentsColumns.ORDER_ID})
 values ({obj.Sum_payment},'{obj.Date_payment:yyyy-MM-dd hh:mm:ss}',{obj.Order_Id})
 """;
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
 
-        public void UpdateObjAsync(Payment obj)//no
+        public void UpdateObj(Payment obj)//no
         {
             throw new NotImplementedException();
         }

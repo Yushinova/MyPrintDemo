@@ -16,27 +16,27 @@ namespace MyPrintDemo.MySQL
         {
             _service = new MySqlService<Product>();
         }
-        public IEnumerable<Product> GetAllAsync()
+        public IEnumerable<Product> GetAll()
         {
-            return _service.GetValuesAsync(Table_names.TABLE_PRODUCTS);
+            return _service.GetValues(Table_names.TABLE_PRODUCTS);
         }
 
-        public Product GetByIDAsync(int id)
+        public Product GetByID(int id)
         {
-            return _service.GetByIdAsync(Table_names.TABLE_PRODUCTS, TableProductsColumn.ID_PRODUCT, id);
+            return _service.GetById(Table_names.TABLE_PRODUCTS, TableProductsColumn.ID_PRODUCT, id);
         }
 
-        public void InsertObjAsync(Product obj)//делаем запрос на вставку и передаем в сервис
+        public void InsertObj(Product obj)//делаем запрос на вставку и передаем в сервис
         {
             string sql = $"""
 insert into {Table_names.TABLE_PRODUCTS} ({TableProductsColumn.NAME_PRODUCT},{TableProductsColumn.HEIGHT},
 {TableProductsColumn.WIDTH}, {TableProductsColumn.COUNT_PRODUCT}, {TableProductsColumn.COST_PRODUCT})
 values ('{obj.Name_product}',{obj.Height}, {obj.Width}, {obj.Count_product}, {obj.Count_product})
 """;
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
 
-        public void UpdateObjAsync(Product obj)//тоже самое
+        public void UpdateObj(Product obj)//тоже самое
         {
             string sql = $"""
 update {Table_names.TABLE_PRODUCTS} set {TableProductsColumn.NAME_PRODUCT}='{obj.Name_product}',
@@ -44,7 +44,7 @@ update {Table_names.TABLE_PRODUCTS} set {TableProductsColumn.NAME_PRODUCT}='{obj
 {TableProductsColumn.COUNT_PRODUCT}={obj.Count_product}, {TableProductsColumn.COST_PRODUCT}={obj.Cost_product}
 where {TableProductsColumn.ID_PRODUCT}={obj.Id_product}
 """;
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
     }
 }

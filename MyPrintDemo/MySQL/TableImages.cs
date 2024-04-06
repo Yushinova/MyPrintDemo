@@ -16,30 +16,30 @@ namespace MyPrintDemo.MySQL
         {
             _service = new MySqlService<Image_product>();
         }
-        public IEnumerable<Image_product> GetAllAsync()
+        public IEnumerable<Image_product> GetAll()
         {
-            return _service.GetValuesAsync(Table_names.TABLE_IMAGES);
+            return _service.GetValues(Table_names.TABLE_IMAGES);
         }
 
-        public Image_product GetByIDAsync(int id)//no
+        public Image_product GetByID(int id)//no
         {
             throw new NotImplementedException();
         }
 
-        public void InsertObjAsync(Image_product obj)
+        public void InsertObj(Image_product obj)
         {
             string sql = $"""
 insert into {Table_names.TABLE_IMAGES} ({TableImagesColumn.URL},{TableImagesColumn.ORDER_ID})
 values ('{obj.Url}',{obj.Order_ID})
 """;
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
 
-        public void UpdateObjAsync(Image_product obj)
+        public void UpdateObj(Image_product obj)
         {
             string sql = $"update {Table_names.TABLE_IMAGES} set {TableImagesColumn.URL}={obj.Url} where ID_image={obj.Id_image}";
 
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
     }
 }

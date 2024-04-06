@@ -21,7 +21,7 @@ namespace MyPrintDemo.Services
             }
             else { _db = new SqlConnection(connectionstr); }
         }
-        public IEnumerable<T> GetValuesAsync(string table_name)
+        public IEnumerable<T> GetValues(string table_name)
         {
             _db.Open();
             var sql = $"Select * from {table_name}";
@@ -30,7 +30,7 @@ namespace MyPrintDemo.Services
             return values;
         }
 
-        public T GetByIdAsync(string table_name, string column_name, int key)
+        public T GetById(string table_name, string column_name, int key)
         {
             _db.Open();
             var sql = $"Select * from {table_name} where {column_name} = {key}";
@@ -40,7 +40,7 @@ namespace MyPrintDemo.Services
 
         }
 
-        public void UpdateAndInsertAsync(string sql)
+        public void UpdateAndInsert(string sql)
         {
             _db.Open();
            _db.Execute(sql);

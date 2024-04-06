@@ -41,28 +41,28 @@ namespace MyPrintDemo.Test
             });
         }
         [Fact]
-        public void GetValuesAsyncUser()
+        public void GetValuesUser()
         {
-            var actual_users = positive_service.GetValuesAsync(Table_names.TABLE_USERS);
+            var actual_users = positive_service.GetValues(Table_names.TABLE_USERS);
             Assert.Equal(actual_users, expected_users);
         }
         [Fact]
-        public void UpdateAndInsertAsyncUser()//вставляем тестового юзера и проверяем
+        public void UpdateAndInsertUser()//вставляем тестового юзера и проверяем
         {
             string sql = $"""
 insert into {Table_names.TABLE_USERS} ({TableUsersColumn.PASSWORD},{TableUsersColumn.LOGIN},{TableUsersColumn.NAME}, {TableUsersColumn.SURNAME}, {TableUsersColumn.PHONE})
 values ('TEST','TEST', 'TEST', 'TEST', 'TEST')
 """;
-            positive_service.UpdateAndInsertAsync(sql);
-            var actual_users = positive_service.GetValuesAsync(Table_names.TABLE_USERS);
+            positive_service.UpdateAndInsert(sql);
+            var actual_users = positive_service.GetValues(Table_names.TABLE_USERS);
             actual_users.Contains(new Models.User { Login = "TEST" });
         }
         [Fact]
-        public void GetValuesAsyncOder()
+        public void GetValuesOder()
         {
 
         MySqlService<Models.Order> positive_service = new MySqlService<Models.Order>();
-            var actual_orders = positive_service.GetValuesAsync(Table_names.TABLE_ORDERS);
+            var actual_orders = positive_service.GetValues(Table_names.TABLE_ORDERS);
             Assert.Equal(actual_orders, expectes_orders);
         }
         [Fact]
@@ -70,7 +70,7 @@ values ('TEST','TEST', 'TEST', 'TEST', 'TEST')
         {
             Models.Order test = new Models.Order { Id_order = 4, Date_order = new DateTime(2024, 3, 30, 21, 36, 15), IsPaid = 1, IsProduction = 1, IsReady = 1, Product_ID = 2, User_ID = 3 };
             TableOrders orders = new TableOrders();
-            orders.UpdateObjAsync(test);
+            orders.UpdateObj(test);
         }
     }
 }

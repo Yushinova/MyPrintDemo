@@ -4,17 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyPrintDemo.WPF"
+         xmlns:local2="clr-namespace:MyPrintDemo.WPF.Elements"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Label Content="MyPrint.Demo" FontSize="24" Foreground="Aqua" FontWeight="Bold"
+Width="200" Height="50" Margin="550,300,0,0">
+        </Label>
         <Grid x:Name="MainGrid" Visibility="Hidden">
             <Label Content="Личный кабинет" FontSize="36"
       Foreground="Aqua" Margin="0,0,0,350"
       Height="50" Width="300"/>
-            <Label Content="MyPrint.Demo" FontSize="24" Foreground="Aqua" FontWeight="Bold"
-      Width="200" Height="50" Margin="550,300,0,0">
-
-            </Label>
 
             <Button x:Name="RegButton" Height="50" Width="250" Background="Aqua" Margin="450,0,0,100"
        Content="Регистрация" FontSize="25">
@@ -34,18 +34,12 @@ Content="Авторизация" FontSize="25">
                 </Button.Resources>
             </Button>
         </Grid>
-        <Grid x:Name="RegistrGrid" >
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/fon.png"/>
-            </Grid.Background>
-            <Label Content="Новый пользователь"
-            FontSize="30"
-      Foreground="Aqua" Margin="0,0,0,350"
-      Height="50" Width="300"/>
-
-        </Grid>
+        <local2:UserRegistration x:Name="RegistrGrid" Margin="0,-30,0,0" Visibility="Hidden"/>
+        <local2:UserAuthorization x:Name="AuthorGrid" Margin="0,-30,0,0"/>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/fon.png"/>
         </Grid.Background>
+        
     </Grid>
+    
 </Window>

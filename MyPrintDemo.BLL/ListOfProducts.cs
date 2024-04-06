@@ -18,9 +18,9 @@ namespace MyPrintDemo.BLL
             product_source = new TableProducts();
         }
 
-        public IEnumerable<Product_BLL> GetAllAsync()
+        public IEnumerable<Product_BLL> GetAll()
         {
-            var result = product_source.GetAllAsync();
+            var result = product_source.GetAll();
             foreach (var item in result)
             {
                 products.Add(Mappers.BLLMapper.MapProductToProduct_BLL(item));
@@ -28,22 +28,22 @@ namespace MyPrintDemo.BLL
             return products;
         }
 
-        public Product_BLL GetByIDAsync(int id)
+        public Product_BLL GetByID(int id)
         {
-            var product = product_source.GetByIDAsync(id);
+            var product = product_source.GetByID(id);
             return Mappers.BLLMapper.MapProductToProduct_BLL(product);
         }
 
-        public void InsertObjAsync(Product_BLL product)//делаем запрос на вставку и передаем в сервис
+        public void InsertObj(Product_BLL product)//делаем запрос на вставку и передаем в сервис
         {
 
-            product_source.InsertObjAsync(Mappers.BLLMapper.MapProduct_BLLToProduct(product));
+            product_source.InsertObj(Mappers.BLLMapper.MapProduct_BLLToProduct(product));
         }
 
-        public void UpdateObjAsync(Product_BLL product)//тоже самое
+        public void UpdateObj(Product_BLL product)//тоже самое
         {
 
-            product_source.UpdateObjAsync(Mappers.BLLMapper.MapProduct_BLLToProduct(product));
+            product_source.UpdateObj(Mappers.BLLMapper.MapProduct_BLLToProduct(product));
         }
     }
 }

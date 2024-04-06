@@ -12,21 +12,22 @@ namespace MyPrintDemo.BLL
     public class ListOfImages
     {
         private ICrud<Image_product> image_source;
-        public List<Image_BLL> images { get; }
+       
         public ListOfImages()
         {
             image_source = new TableImages();
         }
-        public IEnumerable<Image_BLL> GetAllAsync()
+        public IEnumerable<Image_BLL> GetAll()
         {
-            var result = image_source.GetAllAsync();
+            List<Image_BLL> images = new List<Image_BLL>();
+            var result = image_source.GetAll();
             TableOrders orders = new TableOrders();
             TableUsers users = new TableUsers();
             TableProducts products = new TableProducts();
 
-            var all_users =  users.GetAllAsync();
-            var all_products =  products.GetAllAsync();
-            var all_orders =  orders.GetAllAsync();
+            var all_users =  users.GetAll();
+            var all_products =  products.GetAll();
+            var all_orders =  orders.GetAll();
 
             foreach (var item in result)
             {
@@ -37,16 +38,16 @@ namespace MyPrintDemo.BLL
 
         //public async Task<Order_BLL> GetByIDAsync(int id) { };
 
-        public void InsertObjAsync(Image_BLL image)//делаем запрос на вставку и передаем в сервис
+        public void InsertObj(Image_BLL image)//делаем запрос на вставку и передаем в сервис
         {
 
-            image_source.InsertObjAsync(Mappers.BLLMapper.MapImage_BLLToImage(image));
+            image_source.InsertObj(Mappers.BLLMapper.MapImage_BLLToImage(image));
         }
 
-        public void UpdateObjAsync(Image_BLL image)//тоже самое
+        public void UpdateObj(Image_BLL image)//тоже самое
         {
 
-            image_source.UpdateObjAsync(Mappers.BLLMapper.MapImage_BLLToImage(image));
+            image_source.UpdateObj(Mappers.BLLMapper.MapImage_BLLToImage(image));
         }
     }
 }

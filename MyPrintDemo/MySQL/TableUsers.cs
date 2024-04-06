@@ -16,32 +16,32 @@ namespace MyPrintDemo.MySQL
         {
             _service = new MySqlService<User>();
         }
-        public IEnumerable<User> GetAllAsync()
+        public IEnumerable<User> GetAll()
         {
-            return _service.GetValuesAsync(Table_names.TABLE_USERS);
+            return _service.GetValues(Table_names.TABLE_USERS);
         }
 
-        public User GetByIDAsync(int id)
+        public User GetByID(int id)
         {
-            return _service.GetByIdAsync(Table_names.TABLE_USERS, TableUsersColumn.ID_USER, id);
+            return _service.GetById(Table_names.TABLE_USERS, TableUsersColumn.ID_USER, id);
         }
 
-        public void InsertObjAsync(User obj)//делаем запрос на вставку и передаем в сервис
+        public void InsertObj(User obj)//делаем запрос на вставку и передаем в сервис
         {
 string sql = $"""
 insert into {Table_names.TABLE_USERS} ({TableUsersColumn.PASSWORD},{TableUsersColumn.LOGIN},{TableUsersColumn.NAME}, {TableUsersColumn.SURNAME}, {TableUsersColumn.PHONE})
 values ('{obj.Password}','{obj.Login}', '{obj.Name}', '{obj.Surname}', '{obj.Phone}')
 """;
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
 
-        public void UpdateObjAsync(User obj)//тоже самое
+        public void UpdateObj(User obj)//тоже самое
         {
             string sql = $"""
 update {Table_names.TABLE_USERS} set {TableUsersColumn.PASSWORD}='{obj.Password}', {TableUsersColumn.LOGIN}='{obj.Login}',
 {TableUsersColumn.NAME}='{obj.Name}', {TableUsersColumn.SURNAME}='{obj.Surname}', {TableUsersColumn.PHONE}='{obj.Phone}'
 """;
-            _service.UpdateAndInsertAsync(sql);
+            _service.UpdateAndInsert(sql);
         }
     }
 }
