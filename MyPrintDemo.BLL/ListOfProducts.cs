@@ -12,7 +12,7 @@ namespace MyPrintDemo.BLL
     public class ListOfProducts
     {
         private ICrud<Product> product_source;
-        public List<Product_BLL> products { get; }
+        
         public ListOfProducts()
         {
             product_source = new TableProducts();
@@ -20,6 +20,7 @@ namespace MyPrintDemo.BLL
 
         public IEnumerable<Product_BLL> GetAll()
         {
+            List<Product_BLL> products = new List<Product_BLL>();
             var result = product_source.GetAll();
             foreach (var item in result)
             {

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Globalization;
+
 
 namespace MyPrintDemo.BLL.Models
 {
@@ -11,5 +14,8 @@ namespace MyPrintDemo.BLL.Models
         public int Id_image { get; set; }
         public string Url { get; set; }
         public Order_BLL order { get; set; }
+
+
     }
+   
 }

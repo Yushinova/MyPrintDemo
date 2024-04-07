@@ -4,11 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyPrintDemo.WPF"
+        xmlns:local2="clr-namespace:MyPrintDemo.WPF.Convert"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="UserWindow" Height="450" Width="800">
     <Grid>
         <TextBlock x:Name="LoginUser" Height="20" Width="150"
                Margin="0,0,610,380" FontSize="14"
                Text="{Binding Path=Login}"/>
+        <TextBlock x:Name="NameUser" Height="20" Width="150"
+        Margin="0,0,610,340" FontSize="14"
+        Text="{Binding Path=Name}"/>
+        <Button x:Name="Exit" Content="Выход" Width="50" Height="30"
+                Margin="700,0,0,370"/>
+        <ComboBox x:Name="ProductBox" Width="150" Height="30" Margin="0,0,300,370"
+                  Text="Новый заказ" IsEditable="True" Background="LightBlue" 
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Name" DropDownClosed="Selected_Product" />
+        <DataGrid x:Name="OrdersDataGrid" AutoGenerateColumns="False"
+                  Margin="10,70,10,10" SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" Width="40"/>
+                <DataGridTextColumn Header="Дата заказа" Binding="{Binding Path=Order_date}" Width="130"/>
+                <DataGridTextColumn Header="Продукт" Binding="{Binding Path=Product_Name}" Width="130"/>
+                <DataGridTextColumn Header="Размер" Binding="{Binding Path=Size}" Width="80"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Path=Cost}" Width="80"/>
+                <DataGridTextColumn Header="Оплата" Binding="{Binding Path=IsPaid}" Width="80"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Product_count}" Width="80"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=Status}" Width="140"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Grid x:Name="NewOrder" Background="White" Visibility="Hidden">
+            <Label Content="Новый заказ" FontSize="24" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="NameProduct" HorizontalAlignment="Left" 
+                       Height="30" Width="200" Margin="20,0,0,250"
+                       Text="{Binding Path=Name}" FontSize="18"/>
+            <ComboBox x:Name="Count_Images" Height="30" Width="200" HorizontalAlignment="Left"
+                    Text="Цветность" IsEditable="True"  Margin="20,0,0,160"
+                      FontSize="18" DropDownClosed="Selected_Color">
+                <sys:String>1 сторона</sys:String>
+                <sys:String>2 стороны</sys:String>
+            </ComboBox>
+            <TextBlock x:Name="Prise" HorizontalAlignment="Left" 
+                       Height="30" Width="200" Margin="20,50,0,0"
+                       FontSize="18"/>
+            <StackPanel Width="230" Height="300">
+                <Button Content="DownLoad" Click="Button_Click"/>
+              
+            </StackPanel>
+            <StackPanel x:Name="SecondImage" Width="230" Height="300" HorizontalAlignment="Right"
+                        Margin="0,0,20,0" Visibility="Visible">
+                <Button Content="DownLoad" Click="Button_Click"/>
+             
+            </StackPanel>
+        </Grid>
+        <TextBlock x:Name="test" Height="20"/>
     </Grid>
 </Window>
