@@ -97,9 +97,9 @@ namespace MyPrintDemo.WPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();//диалоговое окно
-            dialog.FileName = "Image"; // Default file name
-            dialog.DefaultExt = ".jpg"; // Default file extension
-            dialog.Filter = "Image (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png"; // Filter files by extension
+            dialog.FileName = "TIF or PDF"; // Default file name
+            dialog.DefaultExt = ".TIF"; // Default file extension
+            dialog.Filter = "Image (*.TIF, *.PDF, *.png)|*.TIF;*.PDF;*.png"; // Filter files by extension
 
             // Show open file dialog box
             bool? result = dialog.ShowDialog();
