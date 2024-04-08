@@ -11,13 +11,13 @@ namespace MyPrintDemo.Services
     public class MySqlService<T>
     {
         private readonly SqlConnection _db;
-        public MySqlService(string db = "Server=DESKTOP-H7HCK7B\\SQLEXPRESS;Database=MyPrint;Trusted_Connection=True")
+        public MySqlService()
         {
-            ConfigDB_str config = new ConfigDB_str { connection_str = db };
+            ConfigDB_str config = new ConfigDB_str();
             var connectionstr = config.GetConfigDB_str();
             if (string.IsNullOrEmpty(connectionstr))
             {
-                throw new ArgumentException($"Ошибка строки подключения {db}");
+                throw new ArgumentException($"Ошибка строки подключения {connectionstr}");
             }
             else { _db = new SqlConnection(connectionstr); }
         }

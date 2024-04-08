@@ -42,15 +42,15 @@ namespace MyPrintDemo.Test
         //}
         public void TestPositive()
         {
-            string expected = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\MyPrintDemo\\MyPrintDemo.Test\\TestDB.mdf;Integrated Security=True;";
-            var conf = new ConfigDB_str { connection_str ="Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\MyPrintDemo\\MyPrintDemo.Test\\TestDB.mdf;Integrated Security=True;"};
+            string expected = "Server=DESKTOP-H7HCK7B\\SQLEXPRESS;Database=MyPrint;Trusted_Connection=True";
+            var conf = new ConfigDB_str ();
             string fact = conf.GetConfigDB_str();
             Assert.Equal(expected, fact);
         }
         [Fact]
         public void TestNegative()
         {
-            var conf = new ConfigDB_str { connection_str ="Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\MyPrintDemo\\MyPrint.Test\\TestDB_.mdf;Integrated Security=True;" };
+            var conf = new ConfigDB_str();
             string fact = conf.GetConfigDB_str();
             Assert.Empty(fact);
         }

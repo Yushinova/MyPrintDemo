@@ -31,15 +31,7 @@ namespace MyPrintDemo.Test
         {
             Assert.NotNull(positive_service);
         }
-        [Fact]
-        public void BadConfigTest()
-        {
-           
-            Assert.Throws<ArgumentException>(() =>
-            {
-                MySqlService<Models.User> mySqlService = new MySqlService<Models.User>("Bad_config");
-            });
-        }
+      
         [Fact]
         public void GetValuesUser()
         {
