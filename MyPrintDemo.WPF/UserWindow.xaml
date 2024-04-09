@@ -54,10 +54,13 @@
               
             </StackPanel>
             <StackPanel x:Name="SecondImage" Width="230" Height="300" HorizontalAlignment="Right"
-                        Margin="0,0,20,0" Visibility="Visible">
+                        Margin="0,0,20,0" Visibility="Hidden">
                 <Button Content="DownLoad" Click="Button_Click"/>
              
             </StackPanel>
+            <Button x:Name="SaveOrder" Content="Сохранить"
+                    Width="80" Height="40" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Margin="0,0,20,20" Click="Save_Button_Click"/>
         </Grid>
         <TextBlock x:Name="test" Height="20"/>
     </Grid>

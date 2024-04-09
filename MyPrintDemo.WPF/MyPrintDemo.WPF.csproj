@@ -20,4 +20,10 @@
     <Resource Include="Images\fon.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Config_MsSQL.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

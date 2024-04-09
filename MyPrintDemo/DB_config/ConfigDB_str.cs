@@ -13,26 +13,13 @@ namespace MyPrintDemo.DB_config
     {
         public string? connection_str { get; set; }
 
-        public string GetFromTXT(string path = "C:\\Users\\User\\source\\repos\\MyPrintDemo\\MyPrintDemo\\DB_config\\Config_MsSQL.txt")
+        public string GetFromTXT(string path = "Config_MsSQL.txt")
         {
             using (StreamReader reader = new StreamReader(path))
             {
                 connection_str = reader.ReadToEnd();
             }
             return connection_str;
-        }
-        public string GetConfigDB_str()//проверка подключения к серверу
-        {
-            string connect = GetFromTXT();
-            SqlConnection test = new SqlConnection(connect);
-            string test_str = "";
-            test_str = test.DataSource;
-
-            if (test_str == "")
-            {
-                return test_str;
-            }
-            else { return connection_str; }
         }
     }
 }

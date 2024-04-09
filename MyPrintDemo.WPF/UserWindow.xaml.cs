@@ -1,4 +1,5 @@
 ﻿using MyPrintDemo.BLL.Models;
+using MyPrintDemo.Models;
 using MyPrintDemo.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace MyPrintDemo.WPF
         public List<Product_BLL> product_BLLs = new List<Product_BLL>();
         public Order_BLL order_BLL = new Order_BLL();
         public User_BLL user_BLL = new User_BLL();
+        public List<Image_view> images = new List<Image_view>();
         public UserWindow(BLL.Models.User_BLL user)
         {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace MyPrintDemo.WPF
             user_BLL = user;
         }
 
-        private void OrdersDataGrid_Selected(object sender, RoutedEventArgs e)
+        private void OrdersDataGrid_Selected(object sender, RoutedEventArgs e)//открытие заказа, просмотр картинок из папки сервер
         {
 
         }
@@ -71,10 +73,10 @@ namespace MyPrintDemo.WPF
            
             Product_BLL product_BLL = product_BLLs.First(p => p.Id_product == product.Id);
             NameProduct.DataContext = product;
-            Prise.Text = $"{product_BLL.Cost_product} руб.";
+            Prise.Text = $"Цена: {product_BLL.Cost_product} руб.";
             order_BLL = new Order_BLL { Date_order = DateTime.Now, user_bll = user_BLL, product_bll = product_BLL };//
             //test.Text = user_BLL.ID_user.ToString();
-            context.Orders.InsertObj(order_BLL);//заказ вставился но я не знаю id
+            //context.Orders.InsertObj(order_BLL);//заказ вставился но я не знаю id
         }
 
         private void Selected_Color(object sender, EventArgs e)
@@ -110,20 +112,56 @@ namespace MyPrintDemo.WPF
                 // Open document
                 FileInfo f = new FileInfo(dialog.FileName);
                 string path = f.FullName;
-                // Path = dialog.FileName;
-                BitmapImage save = new BitmapImage(new Uri(path));
-                JpegBitmapEncoder jpegBitmapEncoder = new JpegBitmapEncoder();//сохранение картинки в папке программы
-                jpegBitmapEncoder.Frames.Add(BitmapFrame.Create(save));
-                string save_url = @"C:\Users\User\source\repos\MyPrintDemo\MyPrintDemo.WPF\Images\" + System.IO.Path.GetFileName(path);
-                using (FileStream fileStream = new FileStream(save_url, FileMode.Create))//Images папка проекта
-                    jpegBitmapEncoder.Save(fileStream);
-                test.Text = order_BLL.Id_order.ToString();
-                //Image_BLL image_BLL = new Image_BLL { Url = save_url, order = order_BLL };//узнать id этого нового заказа
-                //context.Images.InsertObj(image_BLL);
-                Image image = new Image();//на нашу кнопку для визуализации добавляем картинку
-                image.Source = SetBitmap(save_url);
+                Image image = new Image();//на нашу stacpanel для визуализации добавляем картинку
+                image.Source = SetBitmap(path);
                 ((sender as Button).Parent as StackPanel).Children.Add(image);
+                //сюда добавить кнопку "изменить" и событие на эту кнопку событие прописать отдельно 
+                images.Add(new Image_view { Url_viw = path });//путь исходного файла
+               
             }
+        }
+
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(images.Count<1)
+            {
+                MessageBox.Show("Загрузите макет в формате TIF", "Макет отсутствует!",
+              MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                if (order_BLL != null)
+                {
+                    context.Orders.InsertObj(order_BLL);
+                    order_BLLs = context.Orders.GetAll().ToList();
+                    foreach (var item in order_BLLs)
+                    {
+                        if (item.user_bll.ID_user == user_BLL.ID_user)
+                        {
+                            orders.Add(Mappers.WPFMapper.MapOrder_BLLToOrder_view(item, image_BLLs));
+                        }
+                    }
+                    var temp = orders.Last();
+                    order_BLL.Id_order = temp.Id;
+                    foreach (var item in images)
+                    {
+                        BitmapImage save = new BitmapImage(new Uri(item.Url_viw));
+                        JpegBitmapEncoder jpegBitmapEncoder = new JpegBitmapEncoder();//сохранение картинки в папке программы
+                        jpegBitmapEncoder.Frames.Add(BitmapFrame.Create(save));
+                        string save_url = @"C:\Users\User\Desktop\папка Сервер\" + System.IO.Path.GetFileName(item.Url_viw);
+                        using (FileStream fileStream = new FileStream(save_url, FileMode.Create))//Images папка проекта
+                            jpegBitmapEncoder.Save(fileStream);
+                        //test.Text = order_BLL.Id_order.ToString();
+                        Image_BLL image_BLL = new Image_BLL { Url = save_url, order = order_BLL };//узнать id этого нового заказа
+                        context.Images.InsertObj(image_BLL);
+                    }
+                    images.Clear();
+                    NewOrder.Visibility = Visibility.Hidden;
+                }
+           
+            }
+
+
         }
     }
 }

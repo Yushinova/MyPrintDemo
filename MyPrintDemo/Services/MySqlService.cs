@@ -14,7 +14,7 @@ namespace MyPrintDemo.Services
         public MySqlService()
         {
             ConfigDB_str config = new ConfigDB_str();
-            var connectionstr = config.GetConfigDB_str();
+            var connectionstr = config.GetFromTXT();
             if (string.IsNullOrEmpty(connectionstr))
             {
                 throw new ArgumentException($"Ошибка строки подключения {connectionstr}");

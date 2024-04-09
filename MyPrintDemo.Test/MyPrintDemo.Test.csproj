@@ -25,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Config_MsSQL.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestDB.mdf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
