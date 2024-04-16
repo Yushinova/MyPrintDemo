@@ -156,6 +156,7 @@ namespace MyPrintDemo.WPF
                         context.Images.InsertObj(image_BLL);
                     }
                     images.Clear();
+
                     NewOrder.Visibility = Visibility.Hidden;
                 }
            
