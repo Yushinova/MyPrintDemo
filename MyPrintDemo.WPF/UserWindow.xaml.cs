@@ -134,6 +134,7 @@ namespace MyPrintDemo.WPF
                 {
                     context.Orders.InsertObj(order_BLL);
                     order_BLLs = context.Orders.GetAll().ToList();
+                    orders.Clear();
                     foreach (var item in order_BLLs)
                     {
                         if (item.user_bll.ID_user == user_BLL.ID_user)
