@@ -12,7 +12,7 @@
         <Label Content="MyPrint.Demo" FontSize="24" Foreground="Aqua" FontWeight="Bold"
               Width="200" Height="50" Margin="550,300,0,0">
         </Label>
-        <Grid x:Name="MainGrid" Visibility="Hidden">
+        <Grid x:Name="MainGrid" Visibility="Visible">
             <Label Content="Личный кабинет" FontSize="30"
                    Foreground="Aqua" Margin="0,20,0,350"
                    Height="50" Width="300"/>
@@ -69,7 +69,7 @@
                     Content="Зарегистрироваться" Height="40"
                     Margin="230,190,0,0" Click="RegClick" />
         </Grid>
-        <Grid x:Name="AuthorGrid" Visibility="Visible" Margin="0,-20,0,0">
+        <Grid x:Name="AuthorGrid" Visibility="Hidden" Margin="0,-20,0,0">
             <Label Content="Вход в кабинет"
                    FontSize="30" Foreground="Aqua" Margin="0,30,0,350"
                    Height="50" Width="300" HorizontalContentAlignment="Center"/>

@@ -85,7 +85,7 @@ namespace MyPrintDemo.WPF
             else {  SecondImage.Visibility = Visibility.Visible; }
             //test.Text = sender.ToString();
         }
-        public BitmapImage SetBitmap(string path)
+        public static BitmapImage SetBitmap(string path)
         {
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
@@ -162,6 +162,19 @@ namespace MyPrintDemo.WPF
            
             }
 
+
+        }
+
+
+        private void OrderClick(object sender, MouseButtonEventArgs e)
+        {
+            //T.Text = OrdersDataGrid.SelectedItem.ToString();
+            Order_view? order = OrdersDataGrid.SelectedItem as Order_view;
+            if (order != null)
+            {
+                OrderWindow orderWindow = new OrderWindow(order);
+                orderWindow.Show();
+            }
 
         }
     }
